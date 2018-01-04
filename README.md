@@ -11,7 +11,8 @@ db.getCollection('restaurants').find().sort({"name": 1}).limit(10)
 
 // Get by _id
 
-db.getCollection('restaurants').findOne({}, {"_id" : true})._id
+var myId = db.getCollection('restaurants').findOne({}, {"_id" : true})._id;
+db.getCollection('restaurants').findOne({"_id" : myId})
 
 // Get by value
 
@@ -32,9 +33,9 @@ db.getCollection('restaurants').remove({'_id' : myId});
 
 // update a single document
 
-db.getCollection('restaurants').findOne({}, {"_id" : true})._id;
+var myId = db.getCollection('restaurants').findOne({}, {"_id" : true})._id;
 db.getCollection('restaurants').updateOne(
-    {"_id" : "ObjectId('59074c7c057aaffaafb0da64')"
+    {"_id" : myId
     },
     { $set : {"name" : "Bizz Bar Bang"}
     },
